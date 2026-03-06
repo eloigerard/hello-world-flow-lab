@@ -16,6 +16,7 @@ These rules keep collaboration simple, visible, and auditable.
 - Branch naming: `task/<issue-number>-<short-slug>`.
 - PR must reference the issue (`Closes #<issue-number>`).
 - PR must include a short test/verification note.
+- To trigger Cloudine, add label: `cloudine`.
 
 ## Review Rules
 

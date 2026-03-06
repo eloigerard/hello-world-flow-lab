@@ -1,0 +1,30 @@
+name: Notify Cloudine on labeled issues
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  issues: write
+
+jobs:
+  notify:
+    if: github.event.label.name == 'cloudine'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mention Cloudine agent
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const issue_number = context.payload.issue.number;
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number,
+              body: [
+                '@cloudine-agent automated trigger from label `cloudine`.',
+                '',
+                'Please implement this issue using one branch and one PR.',
+                'Request Codex review before merge.'
+              ].join('\n')
+            });
