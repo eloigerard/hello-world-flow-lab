@@ -1,7 +1,7 @@
 # Current Task
 
 ## Active Issue
-TBD (to be created)
+#1 — https://github.com/eloigerard/hello-world-flow-lab/issues/1
 
 ## Objective
 Create a minimal web page that displays `Hello World`.
