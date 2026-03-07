@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   notify:
-    if: github.event.label.name == 'cloudine'
+    if: contains(fromJson('["cloudine","agent:cloudine"]'), github.event.label.name)
     runs-on: ubuntu-latest
     steps:
       - name: Mention Cloudine agent
@@ -22,7 +22,7 @@ jobs:
               repo: context.repo.repo,
               issue_number,
               body: [
-                '@cloudine-agent automated trigger from label `cloudine`.',
+                '@cloudine-agent @claudine automated trigger from label `' + context.payload.label.name + '`.',
                 '',
                 'Please implement this issue using one branch and one PR.',
                 'Request Codex review before merge.'
